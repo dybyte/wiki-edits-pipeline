@@ -1,0 +1,16 @@
+# 기본 제공 테스트. dbt test를 실행하면 각 줄이 "잘못된 행을 찾는 SQL"로 바뀌어 실행된다.
+models:
+  - name: stg_recentchange
+    columns:
+      - name: event_id
+        data_tests:
+          - unique        # 같은 event_id가 두 번 있으면 실패 (실험 1의 "중복 0")
+          - not_null
+      - name: event_type
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ['edit', 'new', 'log', 'categorize']
+      - name: wiki
+        data_tests:
+          - not_null      # canary를 못 거르면 여기서 걸린다

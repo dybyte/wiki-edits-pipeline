@@ -1,0 +1,5 @@
+requests==2.34.2
+confluent-kafka==2.16.0
+clickhouse-connect==1.11.0
+dbt-core==1.12.6
+dbt-clickhouse==1.10.3

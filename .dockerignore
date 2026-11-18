@@ -1,0 +1,7 @@
+.git
+.idea
+.venv
+.checkpoint
+**/__pycache__
+dbt/logs
+dbt/target

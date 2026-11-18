@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+.checkpoint/
+dbt/target/
+dbt/logs/
+dbt/dbt_packages/
+dbt/.user.yml
+.DS_Store
+.idea/

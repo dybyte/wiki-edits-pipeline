@@ -1,0 +1,13 @@
+# Prometheus는 대상에 HTTP GET /metrics 를 주기적으로 보내 값을 가져온다(pull 방식).
+global:
+  # lag이 쌓이는 모습을 촘촘히 보려고 기본값(1m)보다 짧게 잡는다
+  scrape_interval: 10s
+
+scrape_configs:
+  - job_name: kafka-exporter
+    static_configs:
+      - targets: ["kafka-exporter:9308"]   # compose 서비스 이름으로 찾는다
+
+  - job_name: prometheus   # Prometheus 자기 자신
+    static_configs:
+      - targets: ["localhost:9090"]

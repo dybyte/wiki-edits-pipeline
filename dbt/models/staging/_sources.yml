@@ -1,0 +1,10 @@
+# source: dbt가 만들지 않은 테이블. 여기서는 컨슈머(또는 load_sample.py)가 채우는 raw 테이블이다.
+# 모델에서는 {{ source('raw', 'raw_recentchange') }}로 가리킨다.
+sources:
+  - name: raw
+    schema: raw   # ClickHouse의 raw 데이터베이스
+    tables:
+      - name: raw_recentchange
+        loaded_at_field: ingested_at
+        freshness:
+          warn_after: {count: 15, period: minute}   # 15분 넘게 새 데이터가 없으면 경고

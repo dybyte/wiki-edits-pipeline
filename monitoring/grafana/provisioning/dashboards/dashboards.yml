@@ -1,0 +1,7 @@
+apiVersion: 1
+
+providers:
+  - name: kafka
+    type: file
+    options:
+      path: /var/lib/grafana/dashboards   # 이 폴더의 *.json을 대시보드로 올린다

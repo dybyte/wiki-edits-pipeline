@@ -1,0 +1,15 @@
+models:
+  - name: fct_edits_hourly
+    description: "(시간, 위키)별 위키백과 일반 문서 편집 지표"
+    columns:
+      - name: event_hour
+        data_tests: [not_null]
+      - name: wiki
+        data_tests: [not_null]
+  - name: fct_edits_daily
+    description: "(날짜, 위키)별 위키백과 일반 문서 편집 지표"
+    columns:
+      - name: event_date
+        data_tests: [not_null]
+      - name: wiki
+        data_tests: [not_null]

@@ -1,0 +1,14 @@
+# dbt가 접속할 DW. docker-compose.yml의 clickhouse와 같은 값이다 (로컬 전용).
+# ClickHouse에는 schema가 따로 없고 database가 그 역할을 한다. dbt의 schema = ClickHouse의 database.
+wiki_edits:
+  target: dev
+  outputs:
+    dev:
+      type: clickhouse
+      # 호스트에서 실행할 때는 기본값 localhost, Airflow 컨테이너에서는 clickhouse를 주입한다.
+      host: "{{ env_var('CLICKHOUSE_HOST', 'localhost') }}"
+      port: "{{ env_var('CLICKHOUSE_PORT', '8123') | int }}"
+      user: "{{ env_var('CLICKHOUSE_USER', 'wiki') }}"
+      password: "{{ env_var('CLICKHOUSE_PASSWORD', 'wiki') }}"
+      schema: analytics
+      threads: 4
